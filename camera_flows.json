@@ -1,0 +1,1808 @@
+[
+    {
+        "id": "f1d8ba4c.fd7818",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": ".x",
+        "func": "var output = msg.payload.split(\".\");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\n\n\n//var msg1 = {payload : velimp};\n//var msg2 = {payload : angle};\n//var msg3 = {payload : vel};\n\n//var msg1 = {\"msg.topic\": \"x\", \"payload\": velimp.toFixed(2)};\nvar msg1 = {\"msg.topic\": \"x\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle\", \"payload\": vel};\n\n\n//msg.payload = (temp * 9/5 + 32).toFixed(2);\nreturn msg2;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1810,
+        "y": 560,
+        "wires": [
+            [
+                "bd714be3.3c5188"
+            ]
+        ]
+    },
+    {
+        "id": "c8cfd7ba.9ffa88",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": ".y",
+        "func": "var output = msg.payload.split(\".\");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\n\n\n//var msg1 = {payload : velimp};\n//var msg2 = {payload : angle};\n//var msg3 = {payload : vel};\n\n//var msg1 = {\"msg.topic\": \"x\", \"payload\": velimp.toFixed(2)};\nvar msg1 = {\"msg.topic\": \"x\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle\", \"payload\": vel};\n\n\n//msg.payload = (temp * 9/5 + 32).toFixed(2);\nreturn msg3;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1810,
+        "y": 600,
+        "wires": [
+            [
+                "2ddfc878.539608"
+            ]
+        ]
+    },
+    {
+        "id": "9a5f50a.857ceb",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": ".angle",
+        "func": "var output = msg.payload.split(\".\");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar dec    = parseInt(output[3]);\n\n\n//var msg1 = {\"msg.topic\": \"x\", \"payload\": velimp.toFixed(2)};\nvar msg1 = {\"msg.topic\": \"x\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle\", \"payload\": vel};\nvar msg4 = {\"msg.topic\": \"dec\", \"payload\": dec};\n\n\n//msg.payload = (temp * 9/5 + 32).toFixed(2);\nreturn msg4;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1810,
+        "y": 640,
+        "wires": [
+            [
+                "ca9c4032.cc1cd"
+            ]
+        ]
+    },
+    {
+        "id": "bd714be3.3c5188",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "x decimale",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "4",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1990,
+        "y": 572,
+        "wires": [
+            [
+                "f1c66980.925588"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2ddfc878.539608",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "y decimale",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "5",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1990,
+        "y": 600,
+        "wires": [
+            [
+                "b56f3a82.a10178"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ca9c4032.cc1cd",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "angle decimale",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "6",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 2000,
+        "y": 660,
+        "wires": [
+            [
+                "84eb461f.0e99d8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b56f3a82.a10178",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2210,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "84eb461f.0e99d8",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2190,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "f1c66980.925588",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2170,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "644d97b7.d11778",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "count",
+        "func": "var output = msg.payload.split(\".\");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar count1    = parseInt(output[3]);\nvar count2    = parseInt(output[4]);\nvar count3    = parseInt(output[5]);\n\n\nvar msg1 = {\"msg.topic\": \"x\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle\", \"payload\": vel};\nvar msg4 = {\"msg.topic\": \"count1\", \"payload\": count1};\nvar msg5 = {\"msg.topic\": \"count2\", \"payload\": count2};\nvar msg6 = {\"msg.topic\": \"count\", \"payload\": count3};\n\n//return [msg1, 0, 0];\nreturn msg6;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1810,
+        "y": 680,
+        "wires": [
+            [
+                "55590ddb.a3e964"
+            ]
+        ]
+    },
+    {
+        "id": "37ad7be4.cacac4",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "count",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "8",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1310,
+        "y": 680,
+        "wires": [
+            [
+                "67d64c91.dfb394"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "55590ddb.a3e964",
+        "type": "link out",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "ce487b20.c05ee8"
+        ],
+        "x": 1895,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "ce487b20.c05ee8",
+        "type": "link in",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "55590ddb.a3e964"
+        ],
+        "x": 1095,
+        "y": 708,
+        "wires": [
+            [
+                "37ad7be4.cacac4"
+            ]
+        ]
+    },
+    {
+        "id": "67d64c91.dfb394",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c96b1830.3bf4b8",
+        "type": "exec",
+        "z": "31420a18.5c9496",
+        "command": "sudo reboot",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1730,
+        "y": 1122,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7d48c4d8.38edac",
+        "type": "ioBroker in",
+        "z": "31420a18.5c9496",
+        "name": "App Reboot",
+        "topic": "0_userdata.0.reboot",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "fireOnStart": "false",
+        "x": 1270,
+        "y": 1122,
+        "wires": [
+            [
+                "c96b1830.3bf4b8"
+            ]
+        ]
+    },
+    {
+        "id": "203a2ec2.576772",
+        "type": "ioBroker in",
+        "z": "31420a18.5c9496",
+        "name": "home axis",
+        "topic": "0_userdata.0.home",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "fireOnStart": "false",
+        "x": 940,
+        "y": 768,
+        "wires": [
+            [
+                "eae8c02c.4d4b7"
+            ]
+        ]
+    },
+    {
+        "id": "738a967f.1e7b38",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1830,
+        "y": 768,
+        "wires": []
+    },
+    {
+        "id": "fadf612e.5fcf6",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "home axis",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "9",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1650,
+        "y": 768,
+        "wires": [
+            [
+                "738a967f.1e7b38"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "eae8c02c.4d4b7",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "flase",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "true",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 768,
+        "wires": [
+            [
+                "a228ecf3.31f88"
+            ],
+            [
+                "b8adc6e6.0e2268"
+            ]
+        ]
+    },
+    {
+        "id": "a228ecf3.31f88",
+        "type": "change",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 748,
+        "wires": [
+            [
+                "4adeaf2.d496a5"
+            ]
+        ]
+    },
+    {
+        "id": "b8adc6e6.0e2268",
+        "type": "change",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 788,
+        "wires": [
+            [
+                "4adeaf2.d496a5"
+            ]
+        ]
+    },
+    {
+        "id": "4adeaf2.d496a5",
+        "type": "rbe",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "payload",
+        "x": 1490,
+        "y": 768,
+        "wires": [
+            [
+                "fadf612e.5fcf6"
+            ]
+        ]
+    },
+    {
+        "id": "6cfb4bc.2873eb4",
+        "type": "ioBroker in",
+        "z": "31420a18.5c9496",
+        "name": "start program",
+        "topic": "0_userdata.0.start_program",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "fireOnStart": "false",
+        "x": 950,
+        "y": 845,
+        "wires": [
+            [
+                "8d0d3073.70178"
+            ]
+        ]
+    },
+    {
+        "id": "4e42aeb5.c06cc",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1830,
+        "y": 848,
+        "wires": []
+    },
+    {
+        "id": "8d0d3073.70178",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "start program",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "10",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1660,
+        "y": 848,
+        "wires": [
+            [
+                "4e42aeb5.c06cc"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "473e23f5.b02b7c",
+        "type": "ioBroker in",
+        "z": "31420a18.5c9496",
+        "name": "stop program",
+        "topic": "0_userdata.0.stop_program",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "fireOnStart": "false",
+        "x": 950,
+        "y": 945,
+        "wires": [
+            [
+                "7845b29b.4a8ffc"
+            ]
+        ]
+    },
+    {
+        "id": "1d04d2c4.87c26d",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1830,
+        "y": 948,
+        "wires": []
+    },
+    {
+        "id": "75dcda60.563004",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "stop program",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "11",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1650,
+        "y": 948,
+        "wires": [
+            [
+                "1d04d2c4.87c26d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f1213934.00ea78",
+        "type": "rbe",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "payload",
+        "x": 1490,
+        "y": 948,
+        "wires": [
+            [
+                "75dcda60.563004"
+            ]
+        ]
+    },
+    {
+        "id": "7845b29b.4a8ffc",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "flase",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "true",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1090,
+        "y": 948,
+        "wires": [
+            [
+                "d21ea7ec.941098"
+            ],
+            [
+                "ad00b20f.0ae41"
+            ]
+        ]
+    },
+    {
+        "id": "d21ea7ec.941098",
+        "type": "change",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 928,
+        "wires": [
+            [
+                "f1213934.00ea78"
+            ]
+        ]
+    },
+    {
+        "id": "ad00b20f.0ae41",
+        "type": "change",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 968,
+        "wires": [
+            [
+                "f1213934.00ea78"
+            ]
+        ]
+    },
+    {
+        "id": "705b8408.3068dc",
+        "type": "ioBroker in",
+        "z": "31420a18.5c9496",
+        "name": "select program",
+        "topic": "0_userdata.0.program",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "fireOnStart": "false",
+        "x": 960,
+        "y": 1028,
+        "wires": [
+            [
+                "5d193db1.925d04"
+            ]
+        ]
+    },
+    {
+        "id": "c3e16a8d.12f788",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1830,
+        "y": 1028,
+        "wires": []
+    },
+    {
+        "id": "5d193db1.925d04",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "select program",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "12",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1660,
+        "y": 1028,
+        "wires": [
+            [
+                "c3e16a8d.12f788"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9389a2ba.ace3c",
+        "type": "tcp in",
+        "z": "31420a18.5c9496",
+        "name": "camera",
+        "server": "client",
+        "host": "192.168.188.2",
+        "port": "49211",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "camera",
+        "base64": false,
+        "x": 2250,
+        "y": 200,
+        "wires": [
+            [
+                "cf9fe579.62a308",
+                "26871655.14be0a",
+                "b28d8cb7.7788a",
+                "a7ea7a68.196ad8",
+                "12fe0010.20fa8",
+                "7901cf98.b2dd2",
+                "e0574d17.71177",
+                "c8eb38a3.b30238",
+                "a5cc711b.3a551",
+                "a9115788.c33fb8",
+                "f083c7f8.cd4a88",
+                "3c42ab5.a968354",
+                "45189b6d.790664",
+                "995a71bf.746bc",
+                "c30557c1.5b9868",
+                "b003aa76.f60518"
+            ]
+        ]
+    },
+    {
+        "id": "b003aa76.f60518",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "x1",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg4 = {\"msg.topic\": \"quality\", \"payload\": vel3};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\n\n\n\n//return [msg1, 0, 0];\nreturn msg1;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 260,
+        "wires": [
+            [
+                "7a8e8b49.1b6294"
+            ]
+        ]
+    },
+    {
+        "id": "c30557c1.5b9868",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "y1",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\n\n\n//return [msg1, 0, 0];\nreturn msg2;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 300,
+        "wires": [
+            [
+                "5d38956a.843c5c"
+            ]
+        ]
+    },
+    {
+        "id": "cf9fe579.62a308",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "A1",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\n//return [msg1, 0, 0];\nreturn msg3;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 340,
+        "wires": [
+            [
+                "54f4765d.e1c7f8"
+            ]
+        ]
+    },
+    {
+        "id": "26871655.14be0a",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "Q1",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg4 = {\"msg.topic\": \"quality1\", \"payload\": vel3};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\n\nreturn msg4;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b28d8cb7.7788a",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "X2",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg6;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 420,
+        "wires": [
+            [
+                "6efcd61d.805428"
+            ]
+        ]
+    },
+    {
+        "id": "a7ea7a68.196ad8",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "Y2",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg7;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 460,
+        "wires": [
+            [
+                "2d4d34f0.70a10c"
+            ]
+        ]
+    },
+    {
+        "id": "12fe0010.20fa8",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "A2",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg8;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 500,
+        "wires": [
+            [
+                "ff861f0f.8c45d"
+            ]
+        ]
+    },
+    {
+        "id": "7901cf98.b2dd2",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "Q2",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg9;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0574d17.71177",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "X3",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg11;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 580,
+        "wires": [
+            [
+                "e1c56277.648d5"
+            ]
+        ]
+    },
+    {
+        "id": "c8eb38a3.b30238",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "y3",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg12;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 620,
+        "wires": [
+            [
+                "bdb068f8.82de98"
+            ]
+        ]
+    },
+    {
+        "id": "a5cc711b.3a551",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "A3",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg13;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 660,
+        "wires": [
+            [
+                "cbd3aeac.a176d"
+            ]
+        ]
+    },
+    {
+        "id": "a9115788.c33fb8",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "Q3",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg14;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 700,
+        "wires": [
+            [
+                "4ca6abf8.a9de94"
+            ]
+        ]
+    },
+    {
+        "id": "f083c7f8.cd4a88",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "x4",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg16;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 740,
+        "wires": [
+            [
+                "c135c392.477d4"
+            ]
+        ]
+    },
+    {
+        "id": "3c42ab5.a968354",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "y4",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg17;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 780,
+        "wires": [
+            [
+                "eff3eac4.d194c8"
+            ]
+        ]
+    },
+    {
+        "id": "45189b6d.790664",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "A4",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\n\nreturn msg18;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 820,
+        "wires": [
+            [
+                "ad0b9d07.ee3a7"
+            ]
+        ]
+    },
+    {
+        "id": "995a71bf.746bc",
+        "type": "function",
+        "z": "31420a18.5c9496",
+        "name": "Q4",
+        "func": "var output = msg.payload.split(\" \");\n\nvar velimp = parseInt(output[0]);\nvar angle  = parseInt(output[1]);\nvar vel    = parseInt(output[2]);\nvar vel3    = parseInt(output[3]);\nvar vel4    = parseInt(output[4]);\nvar vel5    = parseInt(output[5]);\nvar vel6    = parseInt(output[6]);\nvar vel7    = parseInt(output[7]);\nvar vel8    = parseInt(output[8]);\nvar vel9    = parseInt(output[9]);\nvar vel10    = parseInt(output[10]);\nvar vel11    = parseInt(output[11]);\nvar vel12    = parseInt(output[12]);\nvar vel13    = parseInt(output[13]);\nvar vel14    = parseInt(output[14]);\nvar vel15    = parseInt(output[15]);\nvar vel16    = parseInt(output[16]);\nvar vel17    = parseInt(output[17]);\nvar vel18    = parseInt(output[18]);\nvar vel19    = parseInt(output[19]);\nvar vel20    = parseInt(output[20]);\n\n\nvar msg1 = {\"msg.topic\": \"x1\", \"payload\": velimp};\nvar msg2 = {\"msg.topic\": \"y1\", \"payload\": angle};\nvar msg3 = {\"msg.topic\": \"angle1\", \"payload\": vel};\nvar msg5 = {\"msg.topic\": \"space1\", \"payload\": vel4};\nvar msg6 = {\"msg.topic\": \"x2\", \"payload\": vel5};\nvar msg7 = {\"msg.topic\": \"y2\", \"payload\": vel6};\nvar msg8 = {\"msg.topic\": \"angle2\", \"payload\": vel7};\nvar msg9 = {\"msg.topic\": \"quality2\", \"payload\": vel8};\nvar msg10 = {\"msg.topic\": \"space2\", \"payload\": vel9};\nvar msg11 = {\"msg.topic\": \"x3\", \"payload\": vel10};\nvar msg12 = {\"msg.topic\": \"y3\", \"payload\": vel11};\nvar msg13 = {\"msg.topic\": \"angle3\", \"payload\": vel12};\nvar msg14 = {\"msg.topic\": \"quality3\", \"payload\": vel13};\nvar msg15 = {\"msg.topic\": \"space3\", \"payload\": vel14};\nvar msg16 = {\"msg.topic\": \"x4\", \"payload\": vel15};\nvar msg17 = {\"msg.topic\": \"y4\", \"payload\": vel16};\nvar msg18 = {\"msg.topic\": \"angle4\", \"payload\": vel17};\nvar msg19 = {\"msg.topic\": \"quality4\", \"payload\": vel18};\nvar msg20 = {\"msg.topic\": \"space4\", \"payload\": vel19};\n\n\nreturn msg19;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 2510,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a8e8b49.1b6294",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 260,
+        "wires": [
+            [],
+            [
+                "9cd82736.57a558"
+            ]
+        ]
+    },
+    {
+        "id": "9cd82736.57a558",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "x1",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "1",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 2830,
+        "y": 200,
+        "wires": [
+            [
+                "ed0e4e54.03034"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8ac9c780.24e668",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "y1",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "2",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 2850,
+        "y": 260,
+        "wires": [
+            [
+                "7711ddf5.cd3cd4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "bc7bed55.17907",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "angle",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "3",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 3390,
+        "y": 280,
+        "wires": [
+            [
+                "f5054587.79e468"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f5054587.79e468",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3590,
+        "y": 277,
+        "wires": []
+    },
+    {
+        "id": "79088261.7313dc",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "-1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2890,
+        "y": 580,
+        "wires": [
+            [
+                "e99489bb.56b468"
+            ],
+            [
+                "7bfb8217.2261dc"
+            ]
+        ]
+    },
+    {
+        "id": "c0275498.958368",
+        "type": "calculator",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "inputMsgField": "payload",
+        "outputMsgField": "payload",
+        "operation": "abs",
+        "constant": "",
+        "round": true,
+        "decimals": "2",
+        "x": 3550,
+        "y": 337,
+        "wires": [
+            [
+                "bc7bed55.17907"
+            ]
+        ]
+    },
+    {
+        "id": "57cad109.252ad",
+        "type": "modbus-write",
+        "z": "31420a18.5c9496",
+        "name": "angle polarity",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "7",
+        "quantity": "1",
+        "server": "58c8007c.4b5bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 3490,
+        "y": 560,
+        "wires": [
+            [
+                "ba80ddb1.9e84b"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f439972a.62d3d8",
+        "type": "change",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3320,
+        "y": 560,
+        "wires": [
+            [
+                "57cad109.252ad"
+            ]
+        ]
+    },
+    {
+        "id": "c00d20c8.3c612",
+        "type": "change",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3320,
+        "y": 600,
+        "wires": [
+            [
+                "57cad109.252ad"
+            ]
+        ]
+    },
+    {
+        "id": "e99489bb.56b468",
+        "type": "link out",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "99201d61.da21b",
+            "2523ee5d.a34db2"
+        ],
+        "x": 2960,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "99201d61.da21b",
+        "type": "link in",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "e99489bb.56b468"
+        ],
+        "x": 3110,
+        "y": 560,
+        "wires": [
+            [
+                "f439972a.62d3d8"
+            ]
+        ]
+    },
+    {
+        "id": "7bfb8217.2261dc",
+        "type": "link out",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "70bc5125.5ec1f",
+            "470f8025.d91bb"
+        ],
+        "x": 2960,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "70bc5125.5ec1f",
+        "type": "link in",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "7bfb8217.2261dc"
+        ],
+        "x": 3110,
+        "y": 600,
+        "wires": [
+            [
+                "c00d20c8.3c612"
+            ]
+        ]
+    },
+    {
+        "id": "2523ee5d.a34db2",
+        "type": "link in",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "e99489bb.56b468"
+        ],
+        "x": 3160,
+        "y": 248,
+        "wires": [
+            [
+                "bc7bed55.17907"
+            ]
+        ]
+    },
+    {
+        "id": "470f8025.d91bb",
+        "type": "link in",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "links": [
+            "7bfb8217.2261dc"
+        ],
+        "x": 3160,
+        "y": 288,
+        "wires": [
+            [
+                "c0275498.958368"
+            ]
+        ]
+    },
+    {
+        "id": "ba80ddb1.9e84b",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3730,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "5d38956a.843c5c",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 300,
+        "wires": [
+            [],
+            [
+                "8ac9c780.24e668"
+            ]
+        ]
+    },
+    {
+        "id": "54f4765d.e1c7f8",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 340,
+        "wires": [
+            [],
+            [
+                "79088261.7313dc"
+            ]
+        ]
+    },
+    {
+        "id": "6efcd61d.805428",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 420,
+        "wires": [
+            [],
+            [
+                "9cd82736.57a558"
+            ]
+        ]
+    },
+    {
+        "id": "2d4d34f0.70a10c",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 460,
+        "wires": [
+            [],
+            [
+                "8ac9c780.24e668"
+            ]
+        ]
+    },
+    {
+        "id": "ff861f0f.8c45d",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 500,
+        "wires": [
+            [],
+            [
+                "79088261.7313dc"
+            ]
+        ]
+    },
+    {
+        "id": "e1c56277.648d5",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 580,
+        "wires": [
+            [],
+            [
+                "9cd82736.57a558"
+            ]
+        ]
+    },
+    {
+        "id": "bdb068f8.82de98",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 620,
+        "wires": [
+            [],
+            [
+                "8ac9c780.24e668"
+            ]
+        ]
+    },
+    {
+        "id": "cbd3aeac.a176d",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 660,
+        "wires": [
+            [],
+            [
+                "79088261.7313dc"
+            ]
+        ]
+    },
+    {
+        "id": "4ca6abf8.a9de94",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 700,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c135c392.477d4",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 740,
+        "wires": [
+            [],
+            [
+                "9cd82736.57a558"
+            ]
+        ]
+    },
+    {
+        "id": "eff3eac4.d194c8",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 780,
+        "wires": [
+            [],
+            [
+                "8ac9c780.24e668"
+            ]
+        ]
+    },
+    {
+        "id": "ad0b9d07.ee3a7",
+        "type": "switch",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "NaN",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2670,
+        "y": 820,
+        "wires": [
+            [],
+            [
+                "79088261.7313dc"
+            ]
+        ]
+    },
+    {
+        "id": "ed0e4e54.03034",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3010,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "7711ddf5.cd3cd4",
+        "type": "debug",
+        "z": "31420a18.5c9496",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3030,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "58c8007c.4b5bc",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyS4",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true
+    }
+]
